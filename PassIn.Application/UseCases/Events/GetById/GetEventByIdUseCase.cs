@@ -12,7 +12,8 @@ public class GetEventByIdUseCase
         var entity = dbContext.Events.Find(id);
         
         if (entity is null)
-            throw new PassInException("As event with this ID dont exist. ");
+            throw new NotFoundException("As event with this ID dont exist. ");
+
         return new ResponseEventJson
         {
             Id = entity.Id,
